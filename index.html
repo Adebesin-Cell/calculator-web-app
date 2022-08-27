@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="theme--1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Calculator app</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="calculator">
+        <div class="calculator__label">
+          <div class="calculator__theme-toggle-number">
+            <label for="theme--1" class="calculator__theme-label"> 1 </label>
+            <label for="theme--2" class="calculator__theme-label"> 2 </label>
+            <label for="theme--3" class="calculator__theme-label"> 3 </label>
+          </div>
+        </div>
+        <div class="calculator__header">
+          <h1 class="calculator__heading">calc</h1>
+          <div class="calculator__theme-switcher">
+            <h3 class="calculator__theme-text">Theme</h3>
+            <div class="calculator__theme-input">
+              <div class="calculator__switch">
+                <input
+                  type="radio"
+                  name="theme"
+                  id="theme--1"
+                  data-theme="theme--1"
+                  class="calculator__theme-check"
+                />
+                <input
+                  type="radio"
+                  name="theme"
+                  id="theme--2"
+                  data-theme="theme--2"
+                  class="calculator__theme-check"
+                />
+                <input
+                  type="radio"
+                  name="theme"
+                  id="theme--3"
+                  data-theme="theme--3"
+                  class="calculator__theme-check"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="calculator__screen">
+          <div class="calculator__history">&nbsp;</div>
+          <input value="" class="calculator__input" name="screen" type="text" />
+        </div>
+        <div class="calculator__keyboard">
+          <!-- row 1 starts here -->
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="7"
+            value="7"
+            id="7"
+          >
+            7
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="8"
+            value="8"
+            id="8"
+          >
+            8
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="9"
+            value="9"
+            id="9"
+          >
+            9
+          </button>
+          <button
+            class="calculator__button calculator__button--del"
+            data-value="DEL"
+            value="DEL"
+            id="DEL"
+          >
+            DEL
+          </button>
+          <!-- row 1 ends here -->
+          <!-- row 2 starts here -->
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="4"
+            value="4"
+            id="4"
+          >
+            4
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="5"
+            value="5"
+            id="5"
+          >
+            5
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="6"
+            value="6"
+            id="6"
+          >
+            6
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="+"
+            value="+"
+            id="+"
+          >
+            +
+          </button>
+          <!-- row 2 ends here -->
+          <!-- row 3 starts here -->
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="1"
+            value="1"
+            id="1"
+          >
+            1
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="2"
+            value="2"
+            id="2"
+          >
+            2
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="3"
+            value="3"
+            id="3"
+          >
+            3
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="-"
+            value="-"
+            id="-"
+          >
+            -
+          </button>
+          <!-- row 3 ends here -->
+          <!-- row 4 starts here -->
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="."
+            value="."
+            id="."
+          >
+            .
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="0"
+            value="0"
+            id="0"
+          >
+            0
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="/"
+            value="/"
+            id="/"
+          >
+            /
+          </button>
+          <button
+            class="calculator__button calculator__button--number"
+            data-value="*"
+            value="*"
+            id="*"
+          >
+            x
+          </button>
+          <!-- row 4 ends here -->
+          <!-- row 5 starts here-->
+          <button
+            class="calculator__button calculator__button--reset"
+            data-value="RESET"
+            value="RESET"
+            id="RESET"
+          >
+            Reset
+          </button>
+          <button
+            class="calculator__button calculator__button--equals"
+            data-value="="
+            value="="
+            id="="
+            role="button"
+          >
+            =
+          </button>
+
+          <!-- row 5 ends here -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+    <script src="./Js/app.js"></script>
+  </body>
+</html>
