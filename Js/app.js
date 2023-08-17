@@ -1,82 +1,55 @@
 const currentTheme = localStorage.getItem('calculator_theme');
 const wrapper = document.querySelector('.calculator__switch');
 const btns = document.querySelectorAll('.calculator__theme-check');
-
 const calculatorScreenEl = document.querySelector('.calculator__input');
 const calculatorHistoryEl = document.querySelector('.calculator__history');
 const calculatorKeys = document.querySelectorAll('.calculator__button');
-const calculatorEqualsButton = document.querySelector(
-  '.calculator__button--equals'
-);
-
+const calculatorEqualsButton = document.querySelector('.calculator__button--equals');
 let previousValue = '';
 
-if (!currentTheme) {
-  btns[0].checked = true;
-  document.documentElement.classList.add('theme--1');
-}
-
-if (currentTheme === 'theme--1') {
-  document.documentElement.classList.toggle('theme--1');
-} else if (currentTheme === 'theme--2') {
-  document.documentElement.classList.toggle('theme--2');
-} else if (currentTheme === 'theme--3') {
-  document.documentElement.classList.toggle('theme--3');
-}
-
-document.documentElement.classList.add(currentTheme);
-
-btns.forEach((btn) => {
-  if (btn.id === currentTheme) {
-    btn.checked = true;
+function applyTheme(theme) {
+  document.documentElement.classList.remove('theme--1', 'theme--2', 'theme--3');
+  if (theme) {
+    document.documentElement.classList.add(theme);
+  } else {
+    document.documentElement.classList.add('theme--1');
+    btns[0].checked = true;
   }
-});
+}
 
-wrapper.addEventListener('click', function (e) {
-  const btn = e.target.closest('.calculator__theme-check');
-
-  if (!btn.classList.contains('calculator__theme-check')) return;
-
-  document.documentElement.classList = '';
-
-  const { theme } = btn.dataset;
-
-  document.documentElement.classList.toggle(theme);
-
-  localStorage.setItem('calculator_theme', theme);
-});
-
-const evalauteOperation = function () {
-  if (calculatorScreenEl.value.trim() === '') return;
-  calculatorHistoryEl.textContent = calculatorScreenEl.value;
+function evaluateOperation() {
+  const inputTrimmed = calculatorScreenEl.value.trim();
+  if (inputTrimmed === '') return;
+  
+  calculatorHistoryEl.textContent = inputTrimmed;
 
   try {
-    calculatorScreenEl.value = eval(calculatorScreenEl.value);
+    calculatorScreenEl.value = eval(inputTrimmed);
     setScreenAttributeValue();
   } catch (error) {
     console.log(error);
     alert(error.message);
     setScreenAttributeValue();
   }
-};
+}
 
-const setScreenAttributeValue = function () {
+function setScreenAttributeValue() {
   calculatorScreenEl.setAttribute('value', calculatorScreenEl.value);
-};
+}
 
-const resetHandler = function () {
+function resetHandler() {
   calculatorHistoryEl.textContent = '';
   calculatorScreenEl.value = '';
-};
+}
 
-const getValue = function (e) {
-  const { value } = e.target.dataset;
+function getValue(e) {
+  const value = e.target.dataset.value;
 
   if (!value) return;
 
   switch (value) {
     case '=':
-      evalauteOperation();
+      evaluateOperation();
       break;
     case 'DEL':
       calculatorScreenEl.value = calculatorScreenEl.value.slice(0, -1);
@@ -91,7 +64,27 @@ const getValue = function (e) {
       setScreenAttributeValue();
       break;
   }
-};
+}
+
+btns.forEach((btn) => {
+  if (btn.id === currentTheme) {
+    btn.checked = true;
+  }
+});
+
+applyTheme(currentTheme);
+document.documentElement.classList.add(currentTheme);
+
+wrapper.addEventListener('click', function (e) {
+  const btn = e.target.closest('.calculator__theme-check');
+
+  if (!btn || !btn.classList.contains('calculator__theme-check')) return;
+
+  const { theme } = btn.dataset;
+
+  applyTheme(theme);
+  localStorage.setItem('calculator_theme', theme);
+});
 
 calculatorKeys.forEach((key) => {
   key.addEventListener('click', getValue);
